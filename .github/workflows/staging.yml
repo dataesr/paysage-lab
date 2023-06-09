@@ -8,7 +8,7 @@ on:
 env:
   # Must match k8s deployment name
   DEPLOYMENT: paysage-lab
-  DEPLOYMENT_NAMESPACE: paysage
+  DEPLOYMENT_NAMESPACE: paysage-lab
   DEPLOYMENT_URL: https://paysage-lab.staging.dataesr.ovh
   MM_NOTIFICATION_CHANNEL: 'paysage-bot'
 
