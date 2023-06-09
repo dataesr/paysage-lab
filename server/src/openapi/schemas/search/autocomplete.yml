@@ -1,0 +1,18 @@
+title: AutocompletionResults
+description: Résultat d'une recherche en autocomplétion.
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: string
+    score:
+      type: number
+      format: float
+    acronym:
+      type: string
+      nullable: true
+    name:
+      type: string
+    type:
+      type: string

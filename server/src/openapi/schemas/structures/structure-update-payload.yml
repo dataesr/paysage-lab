@@ -1,0 +1,55 @@
+title: Structure
+description: Representation d'une structure
+additionalProperties: false
+type: object
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Unique identifier
+    pattern: '^[a-zA-Z0-9]{5}$'
+  structureStatus:
+    type: string
+    nullable: true
+    enum:
+      - active
+      - inactive
+      - forthcoming
+      - null
+  creationDate:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+    nullable: true
+  creationOfficialTextId:
+    type: string
+    description: Unique officialText identifier
+    pattern: '^[a-zA-Z0-9]{15}$'
+    nullable: true
+  creationReason:
+    type: string
+    nullable: true
+  closureDate:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+    nullable: true
+  closureOfficialTextId:
+    type: string
+    description: Unique officialText identifier
+    pattern: '^[a-zA-Z0-9]{15}$'
+    nullable: true
+  closureReason:
+    type: string
+    nullable: true
+  motto:
+    type: string
+    nullable: true
+  descriptionFr:
+    type: string
+    nullable: true
+  descriptionEn:
+    type: string
+    nullable: true
+  thematics:
+    type: array
+    items:
+      type: string

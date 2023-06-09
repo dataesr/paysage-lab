@@ -1,0 +1,710 @@
+openapi: 3.0.1
+info:
+  title: API
+  description: Documentation for the Paysage REST API routes.
+  contact:
+    email: frederic.olland@enseignementsup.gouv.fr
+  license:
+    name: MIT
+    url: 'https://github.com/dataesr/paysage-api/LICENCE.md'
+  version: 1.0.0
+servers:
+  - url: 'https://api.paysage.staging.dataesr.ovh/'
+    description: Staging server
+  - url: 'https://api.paysage.dataesr.ovh/'
+    description: Production server
+  - url: 'http://localhost:3000/'
+    description: Development server
+
+tags:
+  - name: Api keys
+  - name: Authentication
+  - name: Categories
+  - name: Categories - Identifiers
+  - name: Categories - SocialMedias
+  - name: Categories - Weblinks
+  - name: Documentation
+  - name: Documents
+  - name: Document types
+  - name: Email types
+  - name: Files
+  - name: Follow-ups
+  - name: Journal
+  - name: Legal categories
+  - name: Official texts
+  - name: Persons
+  - name: Persons - Identifiers
+  - name: Persons - SocialMedias
+  - name: Persons - Weblinks
+  - name: Press
+  - name: Prix
+  - name: Prix - Identifiants
+  - name: Prix - Weblinks
+  - name: Projects
+  - name: Projects - Localisations
+  - name: Projects - Weblinks
+  - name: Projects - Identifiers
+  - name: Projects - SocialMedias
+  - name: Relations
+  - name: Relations groups
+  - name: Relation types
+  - name: Search
+  - name: Structures
+  - name: Structures - Emails
+  - name: Structures - Identifiers
+  - name: Structures - Key numbers
+  - name: Structures - Localisations
+  - name: Structures - Logos
+  - name: Structures - Names
+  - name: Structures - SocialMedias
+  - name: Structures - Weblinks
+  - name: Supervising ministers
+  - name: Termes
+  - name: Termes - Identifiants
+  - name: Termes - SocialMedias
+  - name: Termes - Weblinks
+  - name: User's groups
+  - name: Users
+
+security:
+  - ApiKeyAuth: []
+  - BearerAuth: []
+
+paths:
+  ### FICHIERS ###
+  '/files':
+    $ref: ./paths/files/files.yml
+
+  ### AUTHENTICATION ###
+  '/signup':
+    $ref: ./paths/auth/signup.yml
+  '/signin':
+    $ref: ./paths/auth/signin.yml
+  '/signout':
+    $ref: ./paths/auth/signout.yml
+  '/token':
+    $ref: ./paths/auth/tokens.yml
+  '/recovery/password':
+    $ref: ./paths/auth/recovery.yml
+
+  ### USERS ###
+  '/users':
+    $ref: ./paths/users/users.yml#/collectionMethods
+  '/admin/users/{userId}':
+    $ref: ./paths/users/users.yml#/documentAdminMethods
+  '/admin/users/{userId}/confirm':
+    $ref: ./paths/users/users.yml#/documentAdminConfirmMethod
+  '/admin/users':
+    $ref: ./paths/users/users.yml#/collectionAdminMethods
+  '/me':
+    $ref: ./paths/users/me.yml#/Me
+  '/me/password':
+    $ref: ./paths/users/me.yml#/Password
+  '/me/avatar':
+    $ref: ./paths/users/me.yml#/Avatar
+  
+  ### GROUPS ###
+  '/groups':
+    $ref: ./paths/groups/groups.yml#/collectionMethods
+  '/groups/{groupId}':
+    $ref: ./paths/groups/groups.yml#/documentMethods
+  '/groups/{groupId}/members':
+    $ref: ./paths/groups/members.yml#/collectionMethods
+  '/groups/{groupId}/members/{userId}':
+    $ref: ./paths/groups/members.yml#/documentMethods
+
+  ### OPENAPI DOCUMENTATION ###
+  '/docs/specs':
+    $ref: './paths/docs/docs.yml#/specs'
+  '/docs/enums':
+    $ref: './paths/docs/docs.yml#/enums'
+
+  ### STRUCTURES ###
+  '/structures':
+    $ref: './paths/structures/structures.yml#/collectionMethods'
+  '/structures/{structureId}':
+    $ref: './paths/structures/structures.yml#/documentMethods'
+  '/structures/{structureId}/alternative-ids/{alternativeId}':
+    $ref: './paths/structures/alternative-ids.yml#/methods'
+  '/structures/{structureId}/emails':
+    $ref: './paths/structures/emails.yml#/collectionMethods'
+  '/structures/{structureId}/emails/{emailId}':
+    $ref: './paths/structures/emails.yml#/documentMethods'
+  '/structures/{structureId}/identifiers':
+    $ref: './paths/structures/identifiers.yml#/collectionMethods'
+  '/structures/{structureId}/identifiers/{identifierId}':
+    $ref: './paths/structures/identifiers.yml#/documentMethods'
+  '/structures/{structureId}/keynumbers/{dataset}':
+    $ref: './paths/structures/keynumbers.yml#/~1structures~1{structureId}~1keynumbers~1{dataset}'
+  '/structures/{structureId}/localisations':
+    $ref: './paths/structures/localisations.yml#/collectionMethods'
+  '/structures/{structureId}/localisations/{localisationId}':
+    $ref: './paths/structures/localisations.yml#/documentMethods'
+  '/structures/{structureId}/logos':
+    $ref: './paths/structures/logos.yml#/collectionMethods'
+  '/structures/{structureId}/logos/{logoId}':
+    $ref: './paths/structures/logos.yml#/documentMethods'
+  '/structures/{structureId}/names':
+    $ref: './paths/structures/names.yml#/collectionMethods'
+  '/structures/{structureId}/names/{nameId}':
+    $ref: './paths/structures/names.yml#/documentMethods'
+  '/structures/{structureId}/social-medias':
+    $ref: './paths/structures/social-medias.yml#/collectionMethods'
+  '/structures/{structureId}/social-medias/{socialmediaId}':
+    $ref: './paths/structures/social-medias.yml#/documentMethods'
+  '/structures/{structureId}/weblinks':
+    $ref: './paths/structures/weblinks.yml#/collectionMethods'
+  '/structures/{structureId}/weblinks/{weblinkId}':
+    $ref: './paths/structures/weblinks.yml#/documentMethods'
+  
+  ### PERSONS ###
+  '/persons':
+    $ref: './paths/persons/persons.yml#/collectionMethods'
+  '/persons/{personId}':
+    $ref: './paths/persons/persons.yml#/documentMethods'
+  '/persons/{personId}/alternative-ids/{alternativeId}':
+    $ref: './paths/persons/alternative-ids.yml#/methods'
+  '/persons/{personId}/identifiers':
+    $ref: './paths/persons/identifiers.yml#/collectionMethods'
+  '/persons/{personId}/identifiers/{identifierId}':
+    $ref: './paths/persons/identifiers.yml#/documentMethods'
+  '/persons/{personId}/weblinks':
+    $ref: './paths/persons/weblinks.yml#/collectionMethods'
+  '/persons/{personId}/weblinks/{weblinkId}':
+    $ref: './paths/persons/weblinks.yml#/documentMethods'
+  '/persons/{personId}/social-medias':
+    $ref: './paths/persons/social-medias.yml#/collectionMethods'
+  '/persons/{personId}/social-medias/{socialmediaId}':
+    $ref: './paths/persons/social-medias.yml#/documentMethods'
+
+  ### TERMS ###
+  '/terms':
+    $ref: './paths/terms/terms.yml#/collectionMethods'
+  '/terms/{termId}':
+    $ref: './paths/terms/terms.yml#/documentMethods'
+  '/terms/{termId}/identifiers':
+    $ref: './paths/terms/identifiers.yml#/collectionMethods'
+  '/terms/{termId}/identifiers/{identifierId}':
+    $ref: './paths/terms/identifiers.yml#/documentMethods'
+  '/terms/{termId}/weblinks':
+    $ref: './paths/terms/weblinks.yml#/collectionMethods'
+  '/terms/{termId}/weblinks/{weblinkId}':
+    $ref: './paths/terms/weblinks.yml#/documentMethods'
+  '/terms/{termId}/social-medias':
+    $ref: './paths/terms/social-medias.yml#/collectionMethods'
+  '/terms/{termId}/social-medias/{socialmediaId}':
+    $ref: './paths/terms/social-medias.yml#/documentMethods'
+
+  ### CATEGORIES JURIDIQUES ###
+  '/legal-categories':
+    $ref: './paths/legalcategories/legalcategories.yml#/collectionMethods'
+  '/legal-categories/{legalCategoryId}':
+    $ref: './paths/legalcategories/legalcategories.yml#/documentMethods'
+
+  ### CATEGORIES ###
+  '/categories':
+    $ref: './paths/categories/categories.yml#/collectionMethods'
+  '/categories/{categoryId}':
+    $ref: './paths/categories/categories.yml#/documentMethods'
+  '/categories/{categoryId}/identifiers':
+    $ref: './paths/categories/identifiers.yml#/collectionMethods'
+  '/categories/{categoryId}/identifiers/{identifierId}':
+    $ref: './paths/categories/identifiers.yml#/documentMethods'
+  '/categories/{categoryId}/weblinks':
+    $ref: './paths/categories/weblinks.yml#/collectionMethods'
+  '/categories/{categoryId}/weblinks/{weblinkId}':
+    $ref: './paths/categories/weblinks.yml#/documentMethods'
+  '/categories/{categoryId}/social-medias':
+    $ref: './paths/categories/social-medias.yml#/collectionMethods'
+  '/categories/{categoryId}/social-medias/{socialmediaId}':
+    $ref: './paths/categories/social-medias.yml#/documentMethods'
+  
+  ### OFFICIAL TEXTS ###
+  '/official-texts':
+    $ref: './paths/officialtexts/officialtexts.yml#/collectionMethods'
+  '/official-texts/{officialTextId}':
+    $ref: './paths/officialtexts/officialtexts.yml#/documentMethods'
+  '/official-texts/{officialTextId}/alternative-ids/{alternativeId}':
+    $ref: './paths/officialtexts/alternative-ids.yml#/methods'
+
+  ### OFFICIAL TEXTS ###
+  '/follow-ups':
+    $ref: './paths/followups/followups.yml#/collectionMethods'
+  '/follow-ups/{followUpId}':
+    $ref: './paths/followups/followups.yml#/documentMethods'
+
+  ### DOCUMENTS ###
+  '/documents':
+    $ref: './paths/documents/documents.yml#/collectionMethods'
+  '/documents/{documentId}':
+    $ref: './paths/documents/documents.yml#/documentMethods'
+
+  ### PRESS ###
+  '/press':
+    $ref: './paths/press/press.yml#/collectionMethods'
+  '/press/{pressId}':
+    $ref: './paths/press/press.yml#/documentMethods'
+
+  ### RELATION GROUPS ###
+  '/relations-groups':
+    $ref: './paths/relationsgroups/relationsgroups.yml#/collectionMethods'
+  '/relations-groups/{relationsGroupId}':
+    $ref: './paths/relationsgroups/relationsgroups.yml#/documentMethods'
+
+  ### PRIX SCIENTIFIQUES ###
+  '/prizes':
+    $ref: './paths/prizes/prizes.yml#/collectionMethods'
+  '/prizes/{prizeId}':
+    $ref: './paths/prizes/prizes.yml#/documentMethods'
+  '/prizes/{prizeId}/identifiers':
+    $ref: './paths/prizes/identifiers.yml#/collectionMethods'
+  '/prizes/{prizeId}/identifiers/{identifierId}':
+    $ref: './paths/prizes/identifiers.yml#/documentMethods'
+  '/prizes/{prizeId}/weblinks':
+    $ref: './paths/prizes/weblinks.yml#/collectionMethods'
+  '/prizes/{prizeId}/weblinks/{weblinkId}':
+    $ref: './paths/prizes/weblinks.yml#/documentMethods'
+
+
+  ### PROJETS ###
+  '/projects':
+    $ref: './paths/projects/projects.yml#/collectionMethods'
+  '/projects/{projectId}':
+    $ref: './paths/projects/projects.yml#/documentMethods'
+  '/projects/{projectId}/weblinks':
+    $ref: './paths/projects/weblinks.yml#/collectionMethods'
+  '/projects/{projectId}/weblinks/{weblinkId}':
+    $ref: './paths/projects/weblinks.yml#/documentMethods'
+  '/projects/{projectId}/localisations':
+    $ref: './paths/projects/localisations.yml#/collectionMethods'
+  '/projects/{projectId}/localisations/{localisationId}':
+    $ref: './paths/projects/localisations.yml#/documentMethods'
+  '/projects/{projectId}/identifiers':
+    $ref: './paths/projects/identifiers.yml#/collectionMethods'
+  '/projects/{projectId}/identifiers/{identifierId}':
+    $ref: './paths/projects/identifiers.yml#/documentMethods'
+  '/projects/{projectId}/social-medias':
+    $ref: './paths/projects/social-medias.yml#/collectionMethods'
+  '/projects/{projectId}/social-medias/{socialmediaId}':
+    $ref: './paths/projects/social-medias.yml#/documentMethods'
+
+  ### TYPES DE RELATION ###
+  '/relation-types':
+    $ref: './paths/relationtypes/relationtypes.yml#/collectionMethods'
+  '/relation-types/{relationTypeId}':
+    $ref: './paths/relationtypes/relationtypes.yml#/documentMethods'
+
+  ### RELATIONS ###
+  '/relations':
+    $ref: './paths/relations/relations.yml#/collectionMethods'
+  '/relations/{relationId}':
+    $ref: './paths/relations/relations.yml#/documentMethods'
+
+  ### TYPES DE DOCUMENT ###
+  '/document-types':
+    $ref: './paths/document-types/document-types.yml#/collectionMethods'
+  '/document-types/{documentTypeId}':
+    $ref: './paths/document-types/document-types.yml#/documentMethods'
+
+  ### TYPES D'EMAIL GENERIQUE ###
+  '/email-types':
+    $ref: './paths/email-types/email-types.yml#/collectionMethods'
+  '/email-types/{emailTypeId}':
+    $ref: './paths/email-types/email-types.yml#/documentMethods'
+  
+  ### MINISTRES DE TUTELLE ###
+  '/supervising-ministers':
+    $ref: './paths/supervising-ministers/supervising-ministers.yml#/collectionMethods'
+  '/supervising-ministers/{supervisingMinisterId}':
+    $ref: './paths/supervising-ministers/supervising-ministers.yml#/documentMethods'
+
+
+  ### API KEYS ###
+  '/admin/api-keys':
+    $ref: './paths/apikeys/apikeys.yml#/collectionMethods'
+  '/admin/api-keys/{apiKeyId}':
+    $ref: './paths/apikeys/apikeys.yml#/documentMethods'
+  
+  ### SEARCH ###
+  '/autocomplete':
+    $ref: './paths/search/autocomplete.yml#/~1autocomplete'
+
+  ### JOURNAL ###
+  '/journal':
+    $ref: './paths/journals/journals.yml#/collectionMethods'
+
+  ### JOBS ###
+  '/jobs':
+    $ref: './paths/jobs/jobs.yml#/collectionMethods'
+
+components:
+  parameters:
+    apiKeyId:
+      $ref: ./parameters/ids/apikey-id.yml
+    alternativeId:
+      $ref: ./parameters/ids/alternative-id.yml
+    categoryId:
+      $ref: ./parameters/ids/category-id.yml
+    dataset:
+      $ref: ./parameters/ids/dataset.yml
+    documentId:
+      $ref: ./parameters/ids/document-id.yml
+    documentTypeId:
+      $ref: ./parameters/ids/document-type-id.yml
+    emailId:
+      $ref: ./parameters/ids/email-id.yml
+    emailTypeId:
+      $ref: ./parameters/ids/email-type-id.yml
+    filters:
+      $ref: ./parameters/query/filters.yml
+    followUpId:
+      $ref: ./parameters/ids/followup-id.yml
+    groupId:
+      $ref: ./parameters/ids/group-id.yml
+    identifierId:
+      $ref: ./parameters/ids/identifier-id.yml
+    legalCategoryId:
+      $ref: ./parameters/ids/legal-category-id.yml
+    limit:
+      $ref: ./parameters/query/limit.yml
+    localisationId:
+      $ref: ./parameters/ids/localisation-id.yml
+    logoId:
+      $ref: ./parameters/ids/logo-id.yml
+    nameId:
+      $ref: ./parameters/ids/name-id.yml
+    newsId:
+      $ref: ./parameters/ids/news-id.yml
+    officialTextId:
+      $ref: ./parameters/ids/official-text-id.yml
+    personId:
+      $ref: ./parameters/ids/person-id.yml
+    pressId:
+      $ref: ./parameters/ids/press-id.yml
+    prizeId:
+      $ref: ./parameters/ids/prize-id.yml
+    projectId:
+      $ref: ./parameters/ids/project-id.yml
+    query:
+      $ref: ./parameters/query/query.yml
+    relatedCategoryId:
+      $ref: ./parameters/ids/related-category-id.yml
+    relatedLegalCategoryId:
+      $ref: ./parameters/ids/related-legal-category-id.yml
+    relationId:
+      $ref: ./parameters/ids/relation-id.yml
+    relationsGroupId:
+      $ref: ./parameters/ids/relations-group-id.yml
+    relationshipId:
+      $ref: ./parameters/ids/relationship-id.yml
+    relationTypeId:
+      $ref: ./parameters/ids/relation-type-id.yml
+    skip:
+      $ref: ./parameters/query/skip.yml
+    socialmediaId:
+      $ref: ./parameters/ids/social-media-id.yml
+    sort:
+      $ref: ./parameters/query/sort.yml
+    start:
+      $ref: ./parameters/query/start.yml
+    structureId:
+      $ref: ./parameters/ids/structure-id.yml
+    supervisingMinisterId:
+      $ref: ./parameters/ids/supervising-minister-id.yml
+    termId:
+      $ref: ./parameters/ids/term-id.yml
+    types:
+      $ref: ./parameters/query/types.yml
+    userId:
+      $ref: ./parameters/ids/user-id.yml
+    weblinkId:
+      $ref: ./parameters/ids/weblink-id.yml
+
+  responses:
+    BadRequest:
+      $ref: './responses/errors/bad-request.yml'
+    Forbidden:
+      $ref: './responses/errors/forbidden.yml'
+    NotFound:
+      $ref: './responses/errors/not-found.yml'
+    ServerError:
+      $ref: './responses/errors/server-error.yml'
+    Unauthorized:
+      $ref: './responses/errors/unauthorized.yml'
+
+  schemas:
+    ### MODELS ###
+    ApiKey:
+      $ref: './schemas/apikeys/apikey.yml'
+    AutocompletionAggregation:
+      $ref: './schemas/search/aggregation.yml'
+    AutocompletionResults:
+      $ref: './schemas/search/autocomplete.yml'
+    Category:
+      $ref: './schemas/categories/category.yml'
+    CategoryIdentifier:
+      $ref: './schemas/categories/identifier.yml'
+    CategoryLight:
+      $ref: './schemas/categories/category-light.yml'
+    CategoryRelationship:
+      $ref: './schemas/commons/category-relationship.yml'
+    CategoryWeblink:
+      $ref: './schemas/categories/weblink.yml'
+    Document:
+      $ref: './schemas/documents/document.yml'
+    DocumentType:
+      $ref: './schemas/commons/nomenclature.yml'
+    DocumentTypeLight:
+      $ref: './schemas/commons/nomenclature-light.yml'
+    EmailType:
+      $ref: './schemas/commons/nomenclature.yml'
+    EmailTypeLight:
+      $ref: './schemas/commons/nomenclature-light.yml'
+    File:
+      $ref: './schemas/commons/file.yml'
+    FollowUp:
+      $ref: './schemas/followups/followup.yml'
+    Group:
+      $ref: ./schemas/groups/group.yml
+    GroupMember:
+      $ref: ./schemas/groups/group-member.yml
+    LegalCategory:
+      $ref: './schemas/legalcategories/legalcategory.yml'
+    LegalCategoryLight:
+      $ref: './schemas/legalcategories/legalcategory-light.yml'
+    Localisation:
+      $ref: './schemas/commons/localisation.yml'
+    LocalisationLight:
+      $ref: './schemas/commons/localisation-light.yml'
+    Logo:
+      $ref: './schemas/commons/logo.yml'
+    Me:
+      $ref: ./schemas/users/me.yml
+    OfficialText:
+      $ref: './schemas/officialtexts/officialtext.yml'
+    OfficialTextLight:
+      $ref: './schemas/officialtexts/officialtext-light.yml'
+    Person:
+      $ref: './schemas/persons/person.yml'
+    PersonIdentifier:
+      $ref: './schemas/persons/identifier.yml'
+    PersonLight:
+      $ref: './schemas/persons/person-light.yml'
+    PersonWeblink:
+      $ref: './schemas/persons/weblink.yml'
+    Press:
+      $ref: './schemas/press/press.yml'
+    Prize:
+      $ref: './schemas/prizes/prize.yml'
+    PrizeIdentifier:
+      $ref: './schemas/prizes/identifier.yml'
+    PrizeLight:
+      $ref: './schemas/prizes/prize-light.yml'
+    PrizeWeblink:
+      $ref: './schemas/prizes/weblink.yml'
+    Project:
+      $ref: './schemas/projects/project.yml'
+    ProjectLight:
+      $ref: './schemas/projects/project-light.yml'
+    ProjectIdentifier:
+      $ref: './schemas/projects/identifier.yml'
+    ProjectWeblink:
+      $ref: './schemas/projects/weblink.yml'
+    Relation:
+      $ref: './schemas/relations/relation.yml'
+    RelationType:
+      $ref: './schemas/relationtypes/relationtype.yml'
+    RelationTypeLight:
+      $ref: './schemas/relationtypes/relationtype-light.yml'
+    RelationsGroup:
+      $ref: './schemas/relationsgroups/relationsgroup.yml'
+    SignInPayload:
+      $ref: ./schemas/auth/signin-payload.yml
+    SignUpPayload:
+      $ref: ./schemas/auth/signup-payload.yml
+    SocialMedia:
+      $ref: './schemas/commons/social-media.yml'
+    Structure:
+      $ref: './schemas/structures/structure.yml'
+    StructureCategory:
+      $ref: './schemas/commons/category-relationship.yml'
+    StructureEmail:
+      $ref: './schemas/structures/email.yml'
+    StructureIdentifier:
+      $ref: './schemas/structures/identifier.yml'
+    StructureKeyNumbers:
+      $ref: './schemas/structures/keynumbers.yml'
+    StructureLegalCategory:
+      $ref: './schemas/structures/legalcategory.yml'
+    StructureLight:
+      $ref: './schemas/structures/structure-light.yml'
+    StructureLocalisation:
+      $ref: './schemas/commons/localisation.yml'
+    StructureLocalisationLight:
+      $ref: './schemas/commons/localisation-light.yml'
+    StructureName:
+      $ref: './schemas/structures/name.yml'
+    StructureNameLight:
+      $ref: './schemas/structures/name-light.yml'
+    StructureSupervisingMinister:
+      $ref: './schemas/structures/supervising-minister.yml'
+    StructureWeblink:
+      $ref: './schemas/structures/weblink.yml'
+    SupervisingMinister:
+      $ref: './schemas/commons/nomenclature.yml'
+    SupervisingMinisterLight:
+      $ref: './schemas/commons/nomenclature-light.yml'
+    Term:
+      $ref: './schemas/terms/term.yml'
+    TermIdentifier:
+      $ref: './schemas/terms/identifier.yml'
+    TermLight:
+      $ref: './schemas/terms/term-light.yml'
+    TermWeblink:
+      $ref: './schemas/terms/weblink.yml'
+    Tokens:
+      $ref: ./schemas/auth/tokens.yml
+    User:
+      $ref: ./schemas/users/user.yml
+    UserAdmin:
+      $ref: ./schemas/users/user-admin.yml
+    UserLight:
+      $ref: ./schemas/users/user-light.yml
+
+    ### PAYLOADS ###
+    ApiKeyPayload:
+      $ref: './schemas/apikeys/apikey-payload.yml'
+    CategoryIdentifierPayload:
+      $ref: './schemas/categories/identifier-payload.yml'
+    CategoryPayload:
+      $ref: './schemas/categories/category-payload.yml'
+    CategoryRelationshipPayload:
+      $ref: './schemas/commons/category-relationship-payload.yml'
+    CategoryWeblinkPayload:
+      $ref: './schemas/categories/weblink-payload.yml'
+    DocumentPayload:
+      $ref: './schemas/documents/document-payload.yml'
+    DocumentTypePayload:
+      $ref: './schemas/commons/nomenclature-payload.yml'
+    EmailTypePayload:
+      $ref: './schemas/commons/nomenclature-payload.yml'
+    FollowUpPayload:
+      $ref: './schemas/followups/followup-payload.yml'
+    GroupMemberPayload:
+      $ref: ./schemas/groups/group-member-payload.yml
+    GroupPayload:
+      $ref: ./schemas/groups/group-payload.yml
+    LegalCategoryPayload:
+      $ref: './schemas/legalcategories/legalcategory-payload.yml'
+    LocalisationPayload:
+      $ref: './schemas/commons/localisation-payload.yml'
+    LogoPayload:
+      $ref: './schemas/commons/logo-payload.yml'
+    OfficialTextPayload:
+      $ref: './schemas/officialtexts/officialtext-payload.yml'
+    PersonBulkInsertPayload:
+      $ref: './schemas/persons/person-create-payload.yml'
+    PersonIdentifierPayload:
+      $ref: './schemas/persons/identifier-payload.yml'
+    PersonPayload:
+      $ref: './schemas/persons/person-payload.yml'
+    PersonWeblinkPayload:
+      $ref: './schemas/persons/weblink-payload.yml'
+    PressPayload:
+      $ref: './schemas/press/press-payload.yml'
+    PrizePayload:
+      $ref: './schemas/prizes/prize-payload.yml'
+    PrizeIdentifierPayload:
+      $ref: './schemas/prizes/identifier-payload.yml'
+    PrizeWeblinkPayload:
+      $ref: './schemas/prizes/weblink-payload.yml'
+    ProjectPayload:
+      $ref: './schemas/projects/project-payload.yml'
+    ProjectWeblinkPayload:
+      $ref: './schemas/projects/weblink-payload.yml'
+    ProjectIdentifierPayload:
+      $ref: './schemas/projects/identifier-payload.yml'
+    RelationPayload:
+      $ref: './schemas/relations/relation-payload.yml'
+    RelationTypePayload:
+      $ref: './schemas/relationtypes/relationtype-payload.yml'
+    RelationsGroupPayload:
+      $ref: './schemas/relationsgroups/relationsgroup-payload.yml'
+    SocialMediaPayload:
+      $ref: './schemas/commons/social-media-payload.yml'
+    StructureCreatePayload:
+      $ref: './schemas/structures/structure-create-payload.yml'
+    StructureEmailPayload:
+      $ref: './schemas/structures/email-payload.yml'
+    StructureIdentifierPayload:
+      $ref: './schemas/structures/identifier-payload.yml'
+    StructureLegalCategoryPayload:
+      $ref: './schemas/structures/legalcategory-payload.yml'
+    StructureLocalisationPayload:
+      $ref: './schemas/commons/localisation-payload.yml'
+    StructureNamePayload:
+      $ref: './schemas/structures/name-payload.yml'
+    StructureSupervisingMinisterPayload:
+      $ref: './schemas/structures/supervising-minister-payload.yml'
+    StructureUpdatePayload:
+      $ref: './schemas/structures/structure-update-payload.yml'
+    StructureWeblinkPayload:
+      $ref: './schemas/structures/weblink-payload.yml'
+    SupervisingMinisterPayload:
+      $ref: './schemas/commons/nomenclature-payload.yml'
+    TermPayload:
+      $ref: './schemas/terms/term-payload.yml'
+    TermIdentifierPayload:
+      $ref: './schemas/terms/identifier-payload.yml'
+    TermWeblinkPayload:
+      $ref: './schemas/terms/weblink-payload.yml'
+    UserAdminPayload:
+      $ref: ./schemas/users/user-admin-payload.yml
+
+    ### ENUMS ###
+    CategoryIdentifierTypesEnum:
+      $ref: './schemas/categories/enums/identifier-types.yml'
+    CategoryWeblinkTypesEnum:
+      $ref: './schemas/categories/enums/weblink-types.yml'
+    OfficialTextNaturesEnum:
+      $ref: './schemas/officialtexts/enums/nature.yml'
+    OfficialTextTypesEnum:
+      $ref: './schemas/officialtexts/enums/type.yml'
+    PersonIdentifierTypesEnum:
+      $ref: './schemas/persons/enums/identifier-types.yml'
+    PersonWeblinkTypesEnum:
+      $ref: './schemas/persons/enums/weblink-types.yml'
+    PrizeIdentifierTypesEnum:
+      $ref: './schemas/prizes/enums/identifier-types.yml'
+    PrizeWeblinkTypesEnum:
+      $ref: './schemas/prizes/enums/weblink-types.yml'
+    ProjectWeblinkTypesEnum:
+      $ref: './schemas/projects/enums/weblink-types.yml'
+    ProjectIdentifierTypesEnum:
+      $ref: './schemas/projects/enums/identifier-types.yml'
+    SocialmediaTypesEnum:
+      $ref: './schemas/commons/enums/social-media-types.yml'
+    StructureIdentifierTypesEnum:
+      $ref: './schemas/structures/enums/identifier-types.yml'
+    StructureWeblinkTypesEnum:
+      $ref: './schemas/structures/enums/weblink-types.yml'
+    TermWeblinkTypesEnum:
+      $ref: './schemas/terms/enums/weblink-types.yml'
+    TermIdentifierTypesEnum:
+      $ref: './schemas/terms/enums/identifier-types.yml'
+
+    ### COMMON MODELS ###
+    Error:
+      $ref: './schemas/commons/error.yml'
+    Metas:
+      $ref: './schemas/commons/metas.yml'
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Authentication with a Bearer token.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY

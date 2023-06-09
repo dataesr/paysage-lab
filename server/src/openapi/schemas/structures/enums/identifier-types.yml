@@ -1,0 +1,33 @@
+description: Accepted values of identifier type for a structure
+type: string
+enum:
+  - annelis
+  - bibid
+  - bnf
+  - cnrs-unit
+  - cti
+  - ed
+  - eter
+  - etid
+  - finess
+  - fundref
+  - grid
+  - idhal
+  - idref
+  - isil
+  - isni
+  - oc
+  - orgref
+  - pia
+  - pic
+  - rcr
+  - ringgold
+  - rna
+  - rnsr
+  - ror
+  - rtoad
+  - sdid
+  - siret
+  - uai
+  - wikidata
+  - codeNumber

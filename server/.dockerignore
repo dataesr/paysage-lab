@@ -1,0 +1,24 @@
+# IDE
+.idea
+.vscode
+
+# dependencies
+/node_modules
+
+# docs
+/docs
+
+# Git
+.git
+.github
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Misc
+.DS_Store
+.eslintrc
+README.md

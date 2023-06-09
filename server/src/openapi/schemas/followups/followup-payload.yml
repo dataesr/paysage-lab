@@ -1,0 +1,28 @@
+title: FollowUpPayload
+description: Modèle de création et de mise à jour d'un évènement de suivi
+additionalProperties: false
+type: object
+properties:
+  title:
+    type: string
+  description:
+    type: string
+    nullable: true
+  type:
+    type: string
+    enum:
+      - suivi
+      - évènement
+  files:
+    type: array
+    items:
+      $ref: '../../api.yml#/components/schemas/File'
+  eventDate:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+  relatesTo:
+    type: array
+    description: Une liste d'identifiants d'objets Paysage qui sont liés à l'évènement
+    items:
+      type: string
+      pattern: ^[a-zA-Z0-9]{5}$

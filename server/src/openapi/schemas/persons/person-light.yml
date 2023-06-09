@@ -1,0 +1,29 @@
+title: PersonLight
+description: Object décrivant une personne
+properties:
+  id:
+    type: string
+    description: Unique identifier
+    pattern: '^[a-zA-Z0-9]{5}$'
+    readOnly: true
+  firstName:
+    type: string
+    nullable: true
+  lastName:
+    type: string
+  gender:
+    type: string
+    nullable: true
+    enum:
+      - Homme
+      - Femme
+      - Autre
+      - null
+  displayName:
+    type: string
+  collection:
+    type: string
+  identifiers:
+    type: array
+  href:
+    type: string

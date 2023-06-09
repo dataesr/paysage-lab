@@ -1,0 +1,5 @@
+description: Authentication needed.
+content:
+  application/json:
+    schema:
+      $ref: '../../schemas/commons/error.yml'

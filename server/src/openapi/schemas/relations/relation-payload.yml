@@ -1,0 +1,91 @@
+type: object
+required:
+  - relatedObjectId
+  - resourceId
+properties:
+  resourceId:
+    type: string
+    description: Identifiant de l'objet parent
+    pattern: '^[a-zA-Z0-9]{5}$'
+  relatedObjectId:
+    type: string
+    description: Identifiant unique de l'objet paysage à lier
+    pattern: '((^[a-zA-Z0-9]{5}$)|(^[a-zA-Z0-9]{15}$))'
+  relationTypeId:
+    type: string
+    description: Identifiant unique d'un type de relation
+    pattern: '^[a-zA-Z0-9]{15}$'
+    nullable: true
+  relationsGroupId:
+    type: string
+    description: Identifiant du groupe de relations
+    pattern: '^[a-zA-Z0-9]{15}$'
+    nullable: true
+  relationTag:
+    type: string
+    nullable: true
+  otherAssociatedObjectIds:
+    type: array
+    items:
+      type: string
+  startDateOfficialTextId:
+    type: string
+    pattern: '^[a-zA-Z0-9]{15}$'
+    description: Identifiant d'un texte officiel de creation de relation
+    nullable: true
+  endDateOfficialTextId:
+    type: string
+    pattern: '^[a-zA-Z0-9]{15}$'
+    description: Identifiant d'un texte officiel de fin de relation
+    nullable: true
+  startDate:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+    nullable: true
+  endDate:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+    nullable: true
+  endDatePrevisional:
+    type: string
+    pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+    nullable: true
+  mandateTemporary:
+    type: boolean
+    nullable: true
+  mandateReason:
+    type: string
+    enum:
+      - election
+      - nomination
+      - null
+    nullable: true
+  mandateEmail:
+    type: string
+    format: email
+    nullable: true
+  personalEmail:
+    type: string
+    format: email
+    nullable: true
+  mandatePhonenumber:
+    type: string
+    nullable: true
+  mandatePosition:
+    type: string
+    nullable: true
+    enum:
+      - '1'
+      - '2'
+      - '3+'
+      - 'ND'
+      - null
+  mandatePrecision:
+    type: string
+    nullable: true
+  laureatePrecision:
+    type: string
+    nullable: true
+  active:
+    type: boolean
+    nullable: true

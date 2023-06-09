@@ -1,0 +1,33 @@
+post:
+  tags:
+    - Authentication
+  summary: |
+    Allows to generate a new pair of access and refresh token by providing a valid refresh token.
+    A new pair of token means a new refresh token whose expiration date is reseted with the configurated validity period.
+    The current validity period of a refresh token is 20 days.
+  security: []
+  requestBody:
+    description: A valid refresh token
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - refreshToken
+          properties:
+            refreshToken:
+              type: string
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../api.yml#/components/schemas/Tokens'
+    '400':
+        $ref: '../../api.yml#/components/responses/BadRequest'
+    '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+    '500':
+      $ref: '../../api.yml#/components/responses/ServerError'

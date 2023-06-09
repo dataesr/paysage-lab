@@ -1,0 +1,144 @@
+collectionMethods:
+  get:
+    tags:
+      - Prix - Identifiants
+    summary: List all prize's identifiers
+    parameters:
+      - $ref: '../../api.yml#/components/parameters/prizeId'
+      - $ref: '../../api.yml#/components/parameters/filters'
+      - $ref: '../../api.yml#/components/parameters/skip'
+      - $ref: '../../api.yml#/components/parameters/limit'
+      - $ref: '../../api.yml#/components/parameters/sort'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../../api.yml#/components/schemas/PrizeIdentifier'
+                totalCount:
+                  type: integer
+      '400':
+        $ref: '../../api.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+      '403':
+        $ref: '../../api.yml#/components/responses/Forbidden'
+      '404':
+        $ref: '../../api.yml#/components/responses/NotFound'
+      '500':
+        $ref: '../../api.yml#/components/responses/ServerError'
+
+  post:
+    tags:
+      - Prix - Identifiants
+    summary: Add a new prize's identifier
+    parameters:
+      - $ref: '../../api.yml#/components/parameters/prizeId'
+    requestBody:
+      content:
+        application/json:
+          schema:
+            title: PrizeIdentifierPayLoad
+            type: object
+            required:
+              - type
+              - value
+              - active
+            allOf:
+              - $ref: '../../api.yml#/components/schemas/PrizeIdentifierPayload'
+    responses:
+      '201':
+        description: Created
+        content:
+          application/json:
+            schema:
+              $ref: '../../api.yml#/components/schemas/PrizeIdentifier'
+      '400':
+        $ref: '../../api.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+      '403':
+        $ref: '../../api.yml#/components/responses/Forbidden'
+      '404':
+        $ref: '../../api.yml#/components/responses/NotFound'
+      '500':
+        $ref: '../../api.yml#/components/responses/ServerError'
+
+documentMethods:
+  get:
+    tags:
+      - Prix - Identifiants
+    summary: Get a prize's identifier by ID
+    parameters:
+      - $ref: '../../api.yml#/components/parameters/prizeId'
+      - $ref: '../../api.yml#/components/parameters/identifierId'
+    responses:
+      '200':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '../../api.yml#/components/schemas/PrizeIdentifier'
+      '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+      '403':
+        $ref: '../../api.yml#/components/responses/Forbidden'
+      '404':
+        $ref: '../../api.yml#/components/responses/NotFound'
+      '500':
+        $ref: '../../api.yml#/components/responses/ServerError'
+
+  delete:
+    tags:
+      - Prix - Identifiants
+    summary: Delete a prize's identifier by ID
+    parameters:
+      - $ref: '../../api.yml#/components/parameters/prizeId'
+      - $ref: '../../api.yml#/components/parameters/identifierId'
+    responses:
+      '204':
+        description: No content
+      '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+      '403':
+        $ref: '../../api.yml#/components/responses/Forbidden'
+      '404':
+        $ref: '../../api.yml#/components/responses/NotFound'
+      '500':
+        $ref: '../../api.yml#/components/responses/ServerError'
+
+  patch:
+    tags:
+      - Prix - Identifiants
+    summary: Update a prize's identifier by ID
+    parameters:
+      - $ref: '../../api.yml#/components/parameters/prizeId'
+      - $ref: '../../api.yml#/components/parameters/identifierId'
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../../api.yml#/components/schemas/PrizeIdentifierPayload'
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '../../api.yml#/components/schemas/PrizeIdentifier'
+      '400':
+        $ref: '../../api.yml#/components/responses/BadRequest'
+      '401':
+        $ref: '../../api.yml#/components/responses/Unauthorized'
+      '403':
+        $ref: '../../api.yml#/components/responses/Forbidden'
+      '404':
+        $ref: '../../api.yml#/components/responses/NotFound'
+      '500':
+        $ref: '../../api.yml#/components/responses/ServerError'

@@ -1,0 +1,19 @@
+{
+  "name": "migration",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "process": "node --experimental-specifier-resolution=node process.js",
+    "source": "node --experimental-specifier-resolution=node source-data.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mongodb": "^5.6.0",
+    "p-limit": "^4.0.0",
+    "xlsx": "^0.18.5"
+  }
+}

@@ -1,0 +1,17 @@
+type: object
+properties:
+  email:
+    type: string
+  confirmed:
+    type: boolean
+  role:
+    type: string
+    description: User role
+    enum:
+      - user
+      - admin
+      - reader
+  isDeleted:
+    type: boolean
+  isOtpRequired:
+    type: boolean

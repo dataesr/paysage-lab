@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: string
+    pattern: '^[a-zA-Z0-9]{5}$'
+  usualNameFr:
+    type: string
+  usualNameEn:
+    type: string
+    nullable: true
+  descriptionFr:
+    type: string
+    nullable: true
+  descriptionEn:
+    type: string
+    nullable: true
+  displayName:
+    type: string
+  collection:
+    type: string
+  href:
+    type: string
+  priority:
+    type: integer
+    minimum: 1
+    maximum: 99
+    description: |
+      Priority helps ordering categories.
+      Highest priority is 1. Lowest is 99.
+      Defaults to 99.

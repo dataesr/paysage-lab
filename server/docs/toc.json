@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "GENERAL"
+    },
+    {
+      "type": "item",
+      "title": "Introduction",
+      "uri": "docs/intro.md"
+    },
+    {
+      "type": "item",
+      "title": "Resource API",
+      "uri": "docs/resources.md"
+    },
+    {
+      "type": "item",
+      "title": "Authentification",
+      "uri": "docs/authentication.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "Authentification",
+      "uri": "reference/api.yml"
+    }
+  ]
+}

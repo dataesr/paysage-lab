@@ -1,0 +1,24 @@
+description: Accepted values of social media's type for a structure
+type: string
+enum:
+  - academia
+  - Dailymotion
+  - Facebook
+  - Flickr
+  - France Culture
+  - Github
+  - Gitlab
+  - Instagram
+  - Linkedin
+  - Pinterest
+  - researchgate
+  - Scoopit
+  - Scribd
+  - Snapchat
+  - soundcloud
+  - Tiktok
+  - Tumblr
+  - Twitch
+  - Twitter
+  - Vimeo
+  - Youtube

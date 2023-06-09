@@ -1,0 +1,58 @@
+additionalProperties: false
+type: object
+properties:
+  usualNameFr:
+    type: string
+  usualNameEn:
+    type: string
+    nullable: true
+  shortNameEn:
+    type: string
+    nullable: true
+  shortNameFr:
+    type: string
+    nullable: true
+  acronymFr:
+    type: string
+    nullable: true
+  pluralNameFr:
+    type: string
+    nullable: true
+  otherNamesFr:
+    type: array
+    nullable: true
+    items:
+      type: string
+  otherNamesEn:
+    type: array
+    nullable: true
+    items:
+      type: string
+  descriptionFr:
+    type: string
+    nullable: true
+  descriptionEn:
+    type: string
+    nullable: true
+  comment:
+    type: string
+    nullable: true
+  annelisId:
+    type: string
+    nullable: true
+  priority:
+    type: integer
+    minimum: 1
+    maximum: 99
+    description: |
+      Priority helps ordering categories.
+      Highest priority is 1. Lowest is 99.
+      Defaults to 99.
+  creationOfficialTextId:
+    type: string
+    description: An official text ID that justifies category creation
+    pattern: '^[a-zA-Z0-9]{15}$'
+  closureOfficialTextId:
+    type: string
+    description: An official text ID that justifies category closure
+    pattern: '^[a-zA-Z0-9]{15}$'

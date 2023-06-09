@@ -1,0 +1,27 @@
+description: Accepted values of weblink type for a term
+type: string
+enum:
+  - CanalU
+  - DataGouvFr
+  - EdCF
+  - EducPros
+  - Hal
+  - hceres
+  - IUF
+  - jorfsearch
+  - mooc
+  - OE1
+  - OE2
+  - OE3
+  - Onisep
+  - POpenData
+  - scanR
+  - ServicePublic
+  - TalentCNRS
+  - TheConversation
+  - website
+  - websiteCatForm
+  - websiteDirectory
+  - websiteGovernance
+  - websiteOrganizationChart
+  - websiteRss

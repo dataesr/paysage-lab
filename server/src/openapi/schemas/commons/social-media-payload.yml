@@ -1,0 +1,8 @@
+title: SocialMediaPayload
+description: Modèle de création et de mise à jour d'un média social
+type: object
+properties:
+  type:
+    $ref: ../../api.yml#/components/schemas/SocialmediaTypesEnum
+  account:
+    type: string

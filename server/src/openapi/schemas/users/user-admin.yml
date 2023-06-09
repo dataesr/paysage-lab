@@ -1,0 +1,51 @@
+type: object
+required:
+  - id
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+        description: User id
+      firstName:
+        type: string
+      lastName:
+        type: string
+      position:
+        type: string
+        nullable: true
+      service:
+        type: string
+        nullable: true
+      email:
+        type: string
+      confirmed:
+        type: boolean
+      isDeleted:
+        type: boolean
+      isOtpRequired:
+        type: boolean
+      avatar:
+        type: string
+        nullable: true
+        readOnly: true
+      role:
+        type: string
+        description: User role
+        enum:
+          - user
+          - admin
+          - reader
+      groups:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            acronym:
+              type: string
+  - $ref: '../../api.yml#/components/schemas/Metas'

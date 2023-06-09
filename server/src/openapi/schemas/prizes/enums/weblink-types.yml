@@ -1,0 +1,10 @@
+description: Valeurs possibles pour un type de lien web d'une personne'.
+type: string
+enum:
+  - website
+  - personal
+  - official
+  - EducPros
+  - jorfsearch
+  - scanR
+  - IUF

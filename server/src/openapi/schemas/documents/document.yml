@@ -1,0 +1,49 @@
+title: Document
+description: Représentation d'un document
+allOf:
+  - type: object
+    properties:
+      id:
+        type: string
+        pattern: '^[a-zA-Z0-9]{15}$'
+        readOnly: true
+      title:
+        type: string
+        description: Titre du document
+        nullable: true
+      description:
+        type: string
+        description: Description du document
+        nullable: true
+      documentType:
+        $ref: ../../api.yml#/components/schemas/DocumentType
+      documentTypeId:
+        type: string
+        pattern: '^[a-zA-Z0-9]{15}$'
+      files:
+        type: array
+        items:
+          $ref: '../../api.yml#/components/schemas/File'
+      startDate:
+        type: string
+        pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+      endDate:
+        type: string
+        pattern: '((^$)|(^\d{4}$)|(^\d{4}-(0[1-9]|1[0-2]))|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$))'
+        nullable: true
+      relatedObjects:
+        type: array
+      relatesTo:
+        type: array
+        description: Une liste d'objets Paysage qui sont liés au document
+        items:
+          type: string
+          pattern: ^[a-zA-Z0-9]{5}$
+      isPublic:
+        type: boolean
+      canAccess:
+        type: array
+        items:
+          type: string
+          pattern: ^[a-zA-Z0-9]{15}$
+  - $ref: '../../api.yml#/components/schemas/Metas'

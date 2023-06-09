@@ -1,0 +1,27 @@
+post:
+  tags:
+    - Authentication
+  security: []
+  summary: Sign a user up
+  description: Allow to create a new user account with user informations and credentials
+  requestBody:
+    description: Required user info for account creation
+    content:
+      application/json:
+        schema:
+          $ref: '../../api.yml#/components/schemas/SignUpPayload'
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    '400':
+      $ref: '../../api.yml#/components/responses/BadRequest'
+    '500':
+      $ref: '../../api.yml#/components/responses/ServerError'

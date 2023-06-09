@@ -1,0 +1,14 @@
+description: Accepted values of identifier type for a person
+type: string
+enum:
+  - bnf
+  - idhal
+  - idref
+  - isni
+  - nnt
+  - orcid
+  - scopus
+  - univ-droit
+  - wikidata
+  - wos
+  - researchgate

@@ -1,0 +1,10 @@
+description: Accepted values of identifier type for a term
+type: string
+enum:
+  - idref
+  - ISO2
+  - ISO3
+  - PSUP
+  - PSUPC
+  - PSUPT
+  - wikidata
