@@ -41,7 +41,7 @@ const production = {
 
 const staging = {
   ...production,
-  defaultAccountConfirmation: true,
+  defaultAccountConfirmation: false,
   objectStorage: {
     ...production.objectStorage,
     container: 'paysage-lab-staging',
