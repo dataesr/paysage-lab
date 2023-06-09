@@ -1,6 +1,6 @@
 FROM node:18-alpine
 WORKDIR /app
-COPY package*.json ./
+COPY server/package*.json ./
 RUN npm ci --silent
-COPY . .
+COPY server .
 EXPOSE 3000

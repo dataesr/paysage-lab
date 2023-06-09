@@ -26,7 +26,7 @@ jobs:
         run: cd client && npm ci && npm run build:staging
 
       - name: copy client build to server
-        run: cp -r client/build/ server/public/
+        run: cp -r client/build/ server/public/ && cd ..
 
 
       - name: Build image
